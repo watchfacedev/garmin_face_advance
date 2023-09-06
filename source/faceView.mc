@@ -20,6 +20,8 @@ class faceView extends WatchUi.WatchFace {
     function onShow() as Void {
         var testView = View.findDrawableById("TextLabel") as Text;
         testView.setText("a watch face2?");
+
+        
     }
 
     // Update the view
@@ -29,6 +31,15 @@ class faceView extends WatchUi.WatchFace {
         var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
         var view = View.findDrawableById("TimeLabel") as Text;
         view.setText(timeString);
+
+        var mySmiley = new Rez.Drawables.Smiley();
+        mySmiley.draw( dc );
+
+        var moveBar = new CustomMoveBar({
+			:color=>Graphics.COLOR_DK_GREEN,
+			:string=>"Dz"
+        });
+        moveBar.draw( dc );
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);

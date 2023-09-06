@@ -1,0 +1,5 @@
+<drawable-list id="Smiley" background="Gfx.COLOR_YELLOW">
+    <bitmap id="mouth" x="15" y="25" filename="../bitmaps/icon-192.png" />
+    <shape type="circle" x="25%" y="25%" radius="5" color="Gfx.COLOR_BLACK" />
+    <shape type="circle" x="25%" y="75%" radius="5" color="Gfx.COLOR_BLACK" />
+</drawable-list>

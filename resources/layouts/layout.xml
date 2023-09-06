@@ -1,4 +1,9 @@
 <layout id="WatchFace">
+    <drawable id="Smiley"></drawable>
+    <drawable id="MoveBar" class="CustomMoveBar">
+        <param name="color">Gfx.COLOR_RED</param>
+        <param name="string">"Hello Custom Drawable!"</param>
+    </drawable>
     <label id="TimeLabel" x="center" y="center" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
-    <label id="TextLabel" x="30%" y="30%" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
+    <label id="TextLabel" x="center" y="30%" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
 </layout>

@@ -6,3 +6,4 @@ shark/
 .ares/
 .idea/
 *.iml
+bin/
