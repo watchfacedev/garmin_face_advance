@@ -20,7 +20,7 @@ class CustomMoveBar extends WatchUi.Drawable {
 
     function draw(dc as Dc) as Void {
         // Draw the move bar here
-       dc.setColor(_color);
-       dc.setText(_string);
+       dc.setColor(_color, Graphics.COLOR_RED);
+    //    dc.setText(_string);
     }
 }

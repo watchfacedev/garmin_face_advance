@@ -3,6 +3,38 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
 
+
+class MyProgressDelegate extends WatchUi.BehaviorDelegate {
+    function initialize() {
+        BehaviorDelegate.initialize();
+    }
+
+    function onBack() {
+        return true;
+    }
+}
+
+class MyBehaviorDelegate extends WatchUi.BehaviorDelegate {
+    var progressBar;
+
+    function initialize() {
+        BehaviorDelegate.initialize();
+    }
+
+    function onSelect() {
+        progressBar = new WatchUi.ProgressBar(
+            "Processing...",
+            null
+        );
+        WatchUi.pushView(
+            progressBar,
+            new MyProgressDelegate(),
+            WatchUi.SLIDE_DOWN
+        );
+        return true;
+    }
+}
+
 class faceView extends WatchUi.WatchFace {
 
     function initialize() {
@@ -43,6 +75,16 @@ class faceView extends WatchUi.WatchFace {
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+
+        // var progressBar = new WatchUi.ProgressBar(
+        //     "Processing...",
+        //     null
+        // );
+        // WatchUi.pushView(
+        //     progressBar,
+        //     new MyProgressDelegate(),
+        //     WatchUi.SLIDE_DOWN
+        // );
     }
 
     // Called when this View is removed from the screen. Save the
