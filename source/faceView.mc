@@ -33,23 +33,30 @@ class faceView extends WatchUi.WatchFace {
         var view = View.findDrawableById("TimeLabel") as Text;
         view.setText(timeString);
 
-        var mySmiley = new Rez.Drawables.Smiley();
+        var mySmiley = new Rez.Drawables.Smiley2();
         mySmiley.draw( dc );
 
-        
+         var _customMoveBar = new Rez.Drawables.CustomMoveBar();
+        _customMoveBar.draw(dc);
+
+        // dc.setPenWidth(3);
+        // dc.setColor(Gfx.COLOR_DK_GRAY, Gfx.COLOR_TRANSPARENT);
+        // dc.drawArc(100, 100, 40, Graphics.ARC_CLOCKWISE, 0, 33)
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
 
         var moveBar = new MyProgressBar({
-            :locX=>90,
-            :locY=>180,
-            :width=>100,
-            :height=>10,
-            :color=>Graphics.COLOR_DK_BLUE
+        :locX=>90,
+        :locY=>180,
+        :width=>100,
+        :height=>10,
+        :color=>Graphics.COLOR_DK_BLUE
         });
         moveBar.setPercent(0.75);
         moveBar.draw( dc );
+
+        
     }
 
     // Called when this View is removed from the screen. Save the

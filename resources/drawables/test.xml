@@ -1,0 +1,3 @@
+<drawable-list id="CustomMoveBar" x="25%" y="40%" background="Gfx.COLOR_GREEN">
+    <shape type="circle" x="30%" y="45%" radius="5" color="Gfx.COLOR_YELLOW" />
+</drawable-list>
