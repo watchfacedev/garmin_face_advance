@@ -1,0 +1,9 @@
+<layout id="myProgressBar">
+	<drawable class="MyProgressBar">
+		<param name="locX">176</param>
+		<param name="locY">111</param>
+		<param name="height">20</param>
+		<param name="width">50</param>
+		<param name="color">Graphics.COLOR_RED</param>
+	</drawable>
+</layout>

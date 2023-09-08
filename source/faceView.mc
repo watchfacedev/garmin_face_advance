@@ -4,37 +4,6 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 
-class MyProgressDelegate extends WatchUi.BehaviorDelegate {
-    function initialize() {
-        BehaviorDelegate.initialize();
-    }
-
-    function onBack() {
-        return true;
-    }
-}
-
-class MyBehaviorDelegate extends WatchUi.BehaviorDelegate {
-    var progressBar;
-
-    function initialize() {
-        BehaviorDelegate.initialize();
-    }
-
-    function onSelect() {
-        progressBar = new WatchUi.ProgressBar(
-            "Processing...",
-            null
-        );
-        WatchUi.pushView(
-            progressBar,
-            new MyProgressDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
-        return true;
-    }
-}
-
 class faceView extends WatchUi.WatchFace {
 
     function initialize() {
@@ -67,24 +36,20 @@ class faceView extends WatchUi.WatchFace {
         var mySmiley = new Rez.Drawables.Smiley();
         mySmiley.draw( dc );
 
-        var moveBar = new CustomMoveBar({
-			:color=>Graphics.COLOR_DK_GREEN,
-			:string=>"Dz"
-        });
-        moveBar.draw( dc );
+        
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
 
-        // var progressBar = new WatchUi.ProgressBar(
-        //     "Processing...",
-        //     null
-        // );
-        // WatchUi.pushView(
-        //     progressBar,
-        //     new MyProgressDelegate(),
-        //     WatchUi.SLIDE_DOWN
-        // );
+        var moveBar = new MyProgressBar({
+            :locX=>90,
+            :locY=>180,
+            :width=>100,
+            :height=>10,
+            :color=>Graphics.COLOR_DK_BLUE
+        });
+        moveBar.setPercent(0.75);
+        moveBar.draw( dc );
     }
 
     // Called when this View is removed from the screen. Save the
