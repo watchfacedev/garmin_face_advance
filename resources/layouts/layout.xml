@@ -1,6 +1,6 @@
 <layout id="WatchFace">
     <drawable id="Smiley2"></drawable>
-    <drawable id="CustomMoveBar"></drawable>
+    <!-- <drawable id="CustomMoveBar"></drawable> -->
     <label id="TimeLabel" x="center" y="center" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
     <label id="TextLabel" x="center" y="30%" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
 </layout>
