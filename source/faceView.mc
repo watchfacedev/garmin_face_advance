@@ -87,16 +87,12 @@ class faceView extends WatchUi.WatchFace {
         });
         var stepView = View.findDrawableById("stepLabel") as Text;
         stepView.setText("2800");
-
+        // 在imageContainer中预设图片的位置
         var imageContainer = new Rez.Drawables.ImageContainer();
         imageContainer.draw( dc );
-
-
-        
-        // var ImageContainerView = View.findDrawableById("ImageContainer");
-
-        // var mouthView = View.findDrawableById("mouth") as Bitmap;
-        // mouthView.setBitmoumap(res);
+        // 动态加载图片资源，然后直接设置在指定坐标位置
+        var number1 = WatchUi.loadResource(Rez.Drawables.number1) as BitmapResource;
+        dc.drawBitmap( 50, 50, number1 );
 
         
 
