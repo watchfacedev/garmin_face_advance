@@ -70,8 +70,10 @@ class faceView extends WatchUi.WatchFace {
             :color=>Graphics.COLOR_DK_BLUE,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
+        var myStats = System.getSystemStats();
+        var battery = myStats.battery.toNumber().toString();
         var batteryView = View.findDrawableById("batteryLabel") as Text;
-        batteryView.setText("73%");
+        batteryView.setText(battery + "%");
 
          // 最外层的电量
         Utils.drawCircle(dc, {
@@ -91,7 +93,7 @@ class faceView extends WatchUi.WatchFace {
         var imageContainer = new Rez.Drawables.ImageContainer();
         imageContainer.draw( dc );
         // 动态加载图片资源，然后直接设置在指定坐标位置
-        var number1 = WatchUi.loadResource(Rez.Drawables.number1) as BitmapResource;
+        var number1 = Utils.loadNumberResource(2);
         dc.drawBitmap( 50, 50, number1 );
 
         
