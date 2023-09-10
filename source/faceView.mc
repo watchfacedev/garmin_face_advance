@@ -2,6 +2,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
+import Toybox.Time;
 
 
 class faceView extends WatchUi.WatchFace {
@@ -19,9 +20,6 @@ class faceView extends WatchUi.WatchFace {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
-        var testView = View.findDrawableById("TextLabel") as Text;
-        testView.setText("a watch face2?");
-
         
     }
 
@@ -30,11 +28,24 @@ class faceView extends WatchUi.WatchFace {
         // Get and show the current time
         var clockTime = System.getClockTime();
         var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
-        var view = View.findDrawableById("TimeLabel") as Text;
-        view.setText(timeString);
+        // 设置小时、分钟
+        var hourView = View.findDrawableById("hourLabel") as Text;
+        hourView.setText(clockTime.hour.format(("%02d")));
 
-        // var mySmiley = new Rez.Drawables.Smiley2();
-        // mySmiley.draw( dc );
+        var minuteView = View.findDrawableById("minuteLabel") as Text;
+        minuteView.setText(clockTime.min.format(("%02d")));
+
+        var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+
+        System.println(Lang.format("$1$-$2$-$3$", [
+            today.year.format("%04u"),
+            today.month.format("%02u"),
+            today.day.format("%02u")
+        ]));
+
+
+
+       
 
         //  var _customMoveBar = new Rez.Drawables.CustomMoveBar();
         // _customMoveBar.draw(dc);
@@ -46,17 +57,48 @@ class faceView extends WatchUi.WatchFace {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
 
+    
+        // 最外层的电量
         Utils.drawCircle(dc, {
             :width=>10,
             :x=>130,
             :y=>130,
             :r=>130,
-            :fullStart=>90,
-            :fullEnd=>90,
+            :fullStart=>75,
+            :fullEnd=>105,
             :end=>180,
-            :color=>Graphics.COLOR_RED,
+            :color=>Graphics.COLOR_DK_BLUE,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
+        var batteryView = View.findDrawableById("batteryLabel") as Text;
+        batteryView.setText("73%");
+
+         // 最外层的电量
+        Utils.drawCircle(dc, {
+            :width=>3,
+            :x=>180,
+            :y=>80,
+            :r=>24,
+            :fullStart=>100,
+            :fullEnd=>120,
+            :end=>60,
+            :color=>Graphics.COLOR_DK_BLUE,
+            :bgColor=>Graphics.COLOR_DK_GRAY,
+        });
+        var stepView = View.findDrawableById("stepLabel") as Text;
+        stepView.setText("2800");
+
+        var imageContainer = new Rez.Drawables.ImageContainer();
+        imageContainer.draw( dc );
+
+
+        
+        // var ImageContainerView = View.findDrawableById("ImageContainer");
+
+        // var mouthView = View.findDrawableById("mouth") as Bitmap;
+        // mouthView.setBitmoumap(res);
+
+        
 
         // var moveBar = new MyProgressBar({
         //     :locX=>90,

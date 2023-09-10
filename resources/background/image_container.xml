@@ -1,0 +1,3 @@
+<drawable-list id="ImageContainer" background="Gfx.COLOR_TRANSPARENT">
+    <bitmap id="mouth" x="130" y="88" filename="../bitmaps/1.png" />
+</drawable-list>
