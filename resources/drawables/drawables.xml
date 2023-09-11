@@ -1,4 +1,13 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="number0" filename="../bitmaps/0.png" />
     <bitmap id="number1" filename="../bitmaps/1.png" />
+    <bitmap id="number2" filename="../bitmaps/2.png" />
+    <bitmap id="number3" filename="../bitmaps/3.png" />
+    <bitmap id="number4" filename="../bitmaps/4.png" />
+    <bitmap id="number5" filename="../bitmaps/5.png" />
+    <bitmap id="number6" filename="../bitmaps/6.png" />
+    <bitmap id="number7" filename="../bitmaps/7.png" />
+    <bitmap id="number8" filename="../bitmaps/8.png" />
+    <bitmap id="number9" filename="../bitmaps/9.png" />
 </drawables>

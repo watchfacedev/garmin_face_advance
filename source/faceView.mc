@@ -25,15 +25,31 @@ class faceView extends WatchUi.WatchFace {
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
+        // Call the parent onUpdate function to redraw the layout
+        View.onUpdate(dc);
         // Get and show the current time
         var clockTime = System.getClockTime();
         var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
-        // 设置小时、分钟
-        var hourView = View.findDrawableById("hourLabel") as Text;
-        hourView.setText(clockTime.hour.format(("%02d")));
+        // 设置小时、分钟 动态加载图片资源，然后直接设置在指定坐标位置
+        var hourText = clockTime.hour.format("%02d");
+        // var hourView = View.findDrawableById("hourLabel") as Text;
+        // hourView.setText(hourText);
+        var hourTextFirst = hourText.substring(0, 1);
+        var hourTextFirstRes = Utils.loadNumberResource(hourTextFirst);
+        var hourTextSecond = hourText.substring(1, 2);
+        var hourTextSecondRes = Utils.loadNumberResource(hourTextSecond);
+        dc.drawBitmap( 50, 60, hourTextFirstRes );
+        dc.drawBitmap( 115, 60, hourTextSecondRes );
 
-        var minuteView = View.findDrawableById("minuteLabel") as Text;
-        minuteView.setText(clockTime.min.format(("%02d")));
+        var minuteText = clockTime.min.format("%02d");
+        // var minuteView = View.findDrawableById("minuteLabel") as Text;
+        // minuteView.setText(minuteText);
+        var minuteTextFirst = minuteText.substring(0, 1);
+        var minuteTextFirstRes = Utils.loadNumberResource(minuteTextFirst);
+        var minuteTextSecond = minuteText.substring(1, 2);
+        var minuteTextSecondRes = Utils.loadNumberResource(minuteTextSecond);
+        dc.drawBitmap( 50, 130, minuteTextFirstRes );
+        dc.drawBitmap( 115, 130, minuteTextSecondRes );
 
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 
@@ -54,8 +70,7 @@ class faceView extends WatchUi.WatchFace {
         // dc.drawArc(100,100,16, Graphics.ARC_CLOCKWISE ,90,360);
 
 
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
+        
 
     
         // 最外层的电量
@@ -90,11 +105,9 @@ class faceView extends WatchUi.WatchFace {
         var stepView = View.findDrawableById("stepLabel") as Text;
         stepView.setText("2800");
         // 在imageContainer中预设图片的位置
-        var imageContainer = new Rez.Drawables.ImageContainer();
-        imageContainer.draw( dc );
-        // 动态加载图片资源，然后直接设置在指定坐标位置
-        var number1 = Utils.loadNumberResource(2);
-        dc.drawBitmap( 50, 50, number1 );
+        // var imageContainer = new Rez.Drawables.ImageContainer();
+        // imageContainer.draw( dc );
+        
 
         
 

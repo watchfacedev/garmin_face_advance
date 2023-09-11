@@ -5,6 +5,6 @@
     <label id="stepLabel" x="180" y="70" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
     <!-- <drawable id="Smiley2"></drawable> -->
     <!-- <drawable id="CustomMoveBar"></drawable> -->
-    <label id="hourLabel" x="80" y="70" font="Graphics.FONT_SYSTEM_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
-    <label id="minuteLabel" x="80" y="160" font="Graphics.FONT_SYSTEM_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
+    <!-- <label id="hourLabel" x="80" y="70" font="Graphics.FONT_SYSTEM_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" /> -->
+    <!-- <label id="minuteLabel" x="80" y="160" font="Graphics.FONT_SYSTEM_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" /> -->
 </layout>
