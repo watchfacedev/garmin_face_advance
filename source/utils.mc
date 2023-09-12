@@ -3,13 +3,30 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 
 class Utils {
+    static function getNumber(data, defaultData as Number) {
+        return data has :toNumber ? data.toNumber() : defaultData;
+    }
     // 在指定位置话圆圈
     static function drawCircle(dc, options as Dictionary) {
         dc.setPenWidth(options.get(:width));
-        dc.setColor(options.get(:bgColor), options.get(:bgColor));
-        dc.drawArc(options.get(:x), options.get(:y), options.get(:r), Graphics.ARC_CLOCKWISE, options.get(:fullStart),  options.get(:fullEnd));
-        dc.setColor(options.get(:color), options.get(:bgColor));
-        dc.drawArc(options.get(:x), options.get(:y), options.get(:r), Graphics.ARC_CLOCKWISE, options.get(:fullStart),  options.get(:end));
+
+        var fullStart = getNumber(options.get(:fullStart), 0);
+        var fullEnd = getNumber(options.get(:fullEnd), 100);
+        dc.setColor(options.get(:bgColor), options.get(:bgColor)); // 设置总进度颜色
+        dc.drawArc(options.get(:x), options.get(:y), options.get(:r), Graphics.ARC_CLOCKWISE, fullStart, fullEnd);
+        // 计算当前进度画图位置
+        var current = getNumber(options.get(:current), 0);
+        if (current > 0) {
+            var max = getNumber(options.get(:max), 100);
+
+            var currentProgress = ((360 - (fullEnd - fullStart))*current/max).toNumber();
+            var currentPosition = fullStart - currentProgress;
+            if (currentPosition < 0) {
+                currentPosition = currentPosition + 360;
+            }
+            dc.setColor(options.get(:color), options.get(:bgColor)); // 设置当前进度颜色
+            dc.drawArc(options.get(:x), options.get(:y), options.get(:r), Graphics.ARC_CLOCKWISE, fullStart, currentPosition);
+        }
     }
 
     static function loadNumberResource(numberText) {

@@ -3,6 +3,7 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Time;
+import Toybox.ActivityMonitor;
 
 
 class faceView extends WatchUi.WatchFace {
@@ -38,8 +39,8 @@ class faceView extends WatchUi.WatchFace {
         var hourTextFirstRes = Utils.loadNumberResource(hourTextFirst);
         var hourTextSecond = hourText.substring(1, 2);
         var hourTextSecondRes = Utils.loadNumberResource(hourTextSecond);
-        dc.drawBitmap( 50, 60, hourTextFirstRes );
-        dc.drawBitmap( 115, 60, hourTextSecondRes );
+        dc.drawBitmap( 31, 90, hourTextFirstRes );
+        dc.drawBitmap( 80, 90, hourTextSecondRes );
 
         var minuteText = clockTime.min.format("%02d");
         // var minuteView = View.findDrawableById("minuteLabel") as Text;
@@ -48,8 +49,8 @@ class faceView extends WatchUi.WatchFace {
         var minuteTextFirstRes = Utils.loadNumberResource(minuteTextFirst);
         var minuteTextSecond = minuteText.substring(1, 2);
         var minuteTextSecondRes = Utils.loadNumberResource(minuteTextSecond);
-        dc.drawBitmap( 50, 130, minuteTextFirstRes );
-        dc.drawBitmap( 115, 130, minuteTextSecondRes );
+        dc.drawBitmap( 31, 130, minuteTextFirstRes );
+        dc.drawBitmap( 80, 130, minuteTextSecondRes );
 
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 
@@ -58,7 +59,6 @@ class faceView extends WatchUi.WatchFace {
             today.month.format("%02u"),
             today.day.format("%02u")
         ]));
-
 
 
        
@@ -74,6 +74,8 @@ class faceView extends WatchUi.WatchFace {
 
     
         // 最外层的电量
+        var myStats = System.getSystemStats();
+        var battery = myStats.battery.toNumber();
         Utils.drawCircle(dc, {
             :width=>10,
             :x=>130,
@@ -81,16 +83,21 @@ class faceView extends WatchUi.WatchFace {
             :r=>130,
             :fullStart=>75,
             :fullEnd=>105,
-            :end=>180,
+            :max=>100,
+            :current=>battery,
             :color=>Graphics.COLOR_DK_BLUE,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
-        var myStats = System.getSystemStats();
-        var battery = myStats.battery.toNumber().toString();
         var batteryView = View.findDrawableById("batteryLabel") as Text;
-        batteryView.setText(battery + "%");
+        batteryView.setText(battery.toString() + "%");
 
-         // 最外层的电量
+         // 步数 get ActivityMonitor info
+        var info = ActivityMonitor.getInfo();
+
+        var steps = info.steps;
+        var calories = info.calories;
+        System.println("You have taken: " + steps +
+                    " steps and burned: " + calories + " calories!");
         Utils.drawCircle(dc, {
             :width=>3,
             :x=>180,
@@ -98,12 +105,13 @@ class faceView extends WatchUi.WatchFace {
             :r=>24,
             :fullStart=>100,
             :fullEnd=>120,
-            :end=>60,
+            :max=>10000,
+            :current=>steps,
             :color=>Graphics.COLOR_DK_BLUE,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var stepView = View.findDrawableById("stepLabel") as Text;
-        stepView.setText("2800");
+        stepView.setText(steps.toString());
         // 在imageContainer中预设图片的位置
         // var imageContainer = new Rez.Drawables.ImageContainer();
         // imageContainer.draw( dc );
