@@ -4,6 +4,7 @@ import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Time;
 import Toybox.ActivityMonitor;
+import Toybox.Communications;
 
 
 class faceView extends WatchUi.WatchFace {
@@ -21,7 +22,7 @@ class faceView extends WatchUi.WatchFace {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
-        
+        Utils.makeRequest();
     }
 
     // Update the view
@@ -159,5 +160,4 @@ class faceView extends WatchUi.WatchFace {
     // Terminate any active timers and prepare for slow updates.
     function onEnterSleep() as Void {
     }
-
 }
