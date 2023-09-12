@@ -29,6 +29,7 @@ class faceView extends WatchUi.WatchFace {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
         // Get and show the current time
+        var devSettings = System.getDeviceSettings();
         var clockTime = System.getClockTime();
         var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
         // 设置小时、分钟 动态加载图片资源，然后直接设置在指定坐标位置
@@ -94,10 +95,6 @@ class faceView extends WatchUi.WatchFace {
          // 步数 get ActivityMonitor info
         var info = ActivityMonitor.getInfo();
 
-        var steps = info.steps;
-        var calories = info.calories;
-        System.println("You have taken: " + steps +
-                    " steps and burned: " + calories + " calories!");
         Utils.drawCircle(dc, {
             :width=>3,
             :x=>180,
@@ -105,13 +102,30 @@ class faceView extends WatchUi.WatchFace {
             :r=>24,
             :fullStart=>100,
             :fullEnd=>120,
-            :max=>10000,
-            :current=>steps,
+            :max=>info.stepGoal,
+            :current=>info.steps,
             :color=>Graphics.COLOR_DK_BLUE,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var stepView = View.findDrawableById("stepLabel") as Text;
-        stepView.setText(steps.toString());
+        stepView.setText(info.steps.toString());
+
+        var distView = View.findDrawableById("distLabel") as Text;
+        distView.setText("DIST " + info.distance.toString());
+
+        var caloryView = View.findDrawableById("caloryLabel") as Text;
+        caloryView.setText("CAL " + info.calories.toString());
+
+        var msgView = View.findDrawableById("msgLabel") as Text;
+        msgView.setText("MSG " + devSettings.notificationCount.toString());
+
+        var dateView = View.findDrawableById("dateLabel") as Text;
+        dateView.setText(Lang.format("$1$/$2$", [today.month, today.day]));
+
+        var weekView = View.findDrawableById("weekLabel") as Text;
+        weekView.setText(Utils.getWeekStr(today.day_of_week));
+
+
         // 在imageContainer中预设图片的位置
         // var imageContainer = new Rez.Drawables.ImageContainer();
         // imageContainer.draw( dc );

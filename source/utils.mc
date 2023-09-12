@@ -6,6 +6,23 @@ class Utils {
     static function getNumber(data, defaultData as Number) {
         return data has :toNumber ? data.toNumber() : defaultData;
     }
+    static function getWeekStr(number as Number) {
+        if(number == 1) {
+            return "Sun";
+        } else if (number == 2) {
+            return "Mon";
+        } else if (number == 3) {
+            return "Tue";
+        } else if (number == 4) {
+            return "Wen";
+        } else if (number == 5) {
+            return "Thu";
+        } else if (number == 6) {
+            return "Fri";
+        } else {
+            return "Sta";
+        }
+    }
     // 在指定位置话圆圈
     static function drawCircle(dc, options as Dictionary) {
         dc.setPenWidth(options.get(:width));
