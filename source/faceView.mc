@@ -22,7 +22,7 @@ class faceView extends WatchUi.WatchFace {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
-        Utils.makeRequest();
+        
     }
 
     // Update the view
