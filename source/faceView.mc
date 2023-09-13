@@ -79,7 +79,7 @@ class faceView extends WatchUi.WatchFace {
         var myStats = System.getSystemStats();
         var battery = myStats.battery.toNumber();
         Utils.drawCircle(dc, {
-            :width=>10,
+            :width=>14,
             :x=>130,
             :y=>130,
             :r=>130,
@@ -87,7 +87,7 @@ class faceView extends WatchUi.WatchFace {
             :fullEnd=>105,
             :max=>100,
             :current=>battery,
-            :color=>Graphics.COLOR_DK_BLUE,
+            :color=>Graphics.COLOR_DK_GREEN,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var batteryView = View.findDrawableById("batteryLabel") as Text;
@@ -97,7 +97,7 @@ class faceView extends WatchUi.WatchFace {
         var info = ActivityMonitor.getInfo();
 
         Utils.drawCircle(dc, {
-            :width=>3,
+            :width=>4,
             :x=>180,
             :y=>80,
             :r=>24,
@@ -105,7 +105,7 @@ class faceView extends WatchUi.WatchFace {
             :fullEnd=>120,
             :max=>info.stepGoal,
             :current=>info.steps,
-            :color=>Graphics.COLOR_DK_BLUE,
+            :color=>Graphics.COLOR_DK_GREEN,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var stepView = View.findDrawableById("stepLabel") as Text;
