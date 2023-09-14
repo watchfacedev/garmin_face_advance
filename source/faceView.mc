@@ -111,8 +111,11 @@ class faceView extends WatchUi.WatchFace {
         var stepView = View.findDrawableById("stepLabel") as Text;
         stepView.setText(info.steps.toString());
 
-        var distView = View.findDrawableById("distLabel") as Text;
-        distView.setText("DIST " + info.distance.toString());
+        var myFont=WatchUi.loadResource(Rez.Fonts.font_id);
+        dc.drawText(100, 100 ,myFont,"12", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+
+        // var distView = View.findDrawableById("distLabel") as Text;
+        // distView.setText("周茹 " + info.distance.toString());
 
         var caloryView = View.findDrawableById("caloryLabel") as Text;
         caloryView.setText("CAL " + info.calories.toString());
