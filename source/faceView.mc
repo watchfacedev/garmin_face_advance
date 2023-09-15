@@ -111,8 +111,6 @@ class faceView extends WatchUi.WatchFace {
         var stepView = View.findDrawableById("stepLabel") as Text;
         stepView.setText(info.steps.toString());
 
-        var myFont=WatchUi.loadResource(Rez.Fonts.font_id);
-        dc.drawText(100, 100 ,myFont,"12", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
         // var distView = View.findDrawableById("distLabel") as Text;
         // distView.setText("周茹 " + info.distance.toString());
@@ -126,8 +124,11 @@ class faceView extends WatchUi.WatchFace {
         var dateView = View.findDrawableById("dateLabel") as Text;
         dateView.setText(Lang.format("$1$/$2$", [today.month, today.day]));
 
-        var weekView = View.findDrawableById("weekLabel") as Text;
-        weekView.setText(Utils.getWeekStr(today.day_of_week));
+        var zhFont=WatchUi.loadResource(Rez.Fonts.zhFont);
+    	dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(140, 210, zhFont, Utils.getWeekStr(today.day_of_week), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        // var weekView = View.findDrawableById("weekLabel") as Text;
+        // weekView.setText(Utils.getWeekStr(today.day_of_week));
 
 
         // 在imageContainer中预设图片的位置

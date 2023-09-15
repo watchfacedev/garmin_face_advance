@@ -11,19 +11,19 @@ class Utils {
     }
     static function getWeekStr(number as Number) {
         if(number == 1) {
-            return "Sun";
+            return "周日";
         } else if (number == 2) {
-            return "Mon";
+            return "周一";
         } else if (number == 3) {
-            return "Tue";
+            return "周二";
         } else if (number == 4) {
-            return "Wen";
+            return "周三";
         } else if (number == 5) {
-            return "Thu";
+            return "周四";
         } else if (number == 6) {
-            return "Fri";
+            return "周五";
         } else {
-            return "Sta";
+            return "周六";
         }
     }
     // 在指定位置话圆圈

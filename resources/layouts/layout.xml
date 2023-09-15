@@ -7,7 +7,7 @@
     <label id="caloryLabel" x="160" y="150" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
     <label id="msgLabel" x="160" y="170" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
     <label id="dateLabel" x="100" y="200" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
-    <label id="weekLabel" x="140" y="200" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
+    <!-- <label id="weekLabel" x="140" y="200" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" /> -->
     <!-- <drawable id="Smiley2"></drawable> -->
     <!-- <drawable id="CustomMoveBar"></drawable> -->
     <!-- <label id="hourLabel" x="80" y="70" font="Graphics.FONT_SYSTEM_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" /> -->
