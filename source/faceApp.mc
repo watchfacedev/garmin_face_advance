@@ -37,7 +37,7 @@ class faceApp extends Application.AppBase {
     	var now=System.getClockTime();
     	var ts=now.hour+":"+now.min.format("%02d");    
     	System.println("getServiceDelegate: "+ts);
-        return [new MyServiceDelegate()];
+        return [new DateServiceDelegate()];
     }
 
     function onBackgroundData(data){
