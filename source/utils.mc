@@ -26,6 +26,14 @@ class Utils {
             return "周六";
         }
     }
+    static function filledK(number as Number) as String {
+        if (number > 1000) {
+            number = number.toFloat();
+            number = (number/1000).format("%.1f");
+            number = number + "K";
+        }
+        return number.toString();
+    }
     // 在指定位置话圆圈
     static function drawCircle(dc, options as Dictionary) {
         dc.setPenWidth(options.get(:width));

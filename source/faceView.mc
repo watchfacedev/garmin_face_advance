@@ -108,17 +108,11 @@ class faceView extends WatchUi.WatchFace {
         dc.drawBitmap( 170, 52, stepRes);
 
 
-        var distance = info.distance;
-        if (distance > 1000) {
-            distance = distance.toFloat();
-            distance = (distance/1000).format("%.1f");
-            distance = distance + "K";
-        }
         var distView = View.findDrawableById("distText") as Text;
-        distView.setText(distance.toString());
+        distView.setText(Utils.filledK(info.distance));
 
         var caloryView = View.findDrawableById("caloryText") as Text;
-        caloryView.setText(info.calories.toString());
+        distView.setText(Utils.filledK(info.distance));
 
         var msgView = View.findDrawableById("msgText") as Text;
         msgView.setText(devSettings.notificationCount.toString());
