@@ -28,11 +28,14 @@ class faceView extends WatchUi.WatchFace {
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
+        // 在imageContainer中预设图片的位置
+        // var imageContainer = new Rez.Drawables.ImageContainer();
+        // imageContainer.draw( dc );
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
-        // 在imageContainer中预设图片的位置
-        var imageContainer = new Rez.Drawables.ImageContainer();
-        imageContainer.draw( dc );
+        
+        // var bgRes = WatchUi.loadResource(Rez.Drawables.bg) as BitmapResource;
+        // dc.drawBitmap( 0, 0, bgRes );
 
         // Get and show the current time
         var devSettings = System.getDeviceSettings();
@@ -118,7 +121,7 @@ class faceView extends WatchUi.WatchFace {
         msgView.setText(devSettings.notificationCount.toString());
 
         var zhFont=WatchUi.loadResource(Rez.Fonts.zhFont);
-    	dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+    	dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         var dateStr = Lang.format("$1$/$2$", [today.month, today.day]);
         var dateInfo = Storage.getValue("dateInfo") as Lang.Dictionary;
         var lunarStr = dateInfo["lunarCalendar"];

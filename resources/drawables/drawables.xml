@@ -1,5 +1,5 @@
 <drawables>
-    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="LauncherIcon" filename="../bitmaps/launcher_icon.png" />
     <bitmap id="number0" filename="../bitmaps/0.png" />
     <bitmap id="number1" filename="../bitmaps/1.png" />
     <bitmap id="number2" filename="../bitmaps/2.png" />
@@ -12,4 +12,5 @@
     <bitmap id="number9" filename="../bitmaps/9.png" />
     <bitmap id="battery" filename="../bitmaps/battery.svg" />
     <bitmap id="step" filename="../bitmaps/step.svg" />
+    <bitmap id="bg" filename="../bitmaps/bg.png" />
 </drawables>
