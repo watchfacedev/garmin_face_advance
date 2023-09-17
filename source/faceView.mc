@@ -136,7 +136,7 @@ class faceView extends WatchUi.WatchFace {
         distView.setText(Utils.filledK(info.distance));
 
         var caloryView = View.findDrawableById("caloryText") as Text;
-        distView.setText(Utils.filledK(info.distance));
+        distView.setText(Utils.filledK(info.calories));
 
         var msgView = View.findDrawableById("msgText") as Text;
         msgView.setText(devSettings.notificationCount.toString());
@@ -150,6 +150,10 @@ class faceView extends WatchUi.WatchFace {
         var lunarStr = "";
         if (dateInfo != null) {
             lunarStr = dateInfo["lunarCalendar"];
+            // 天气
+            var _weatherData = dateInfo["_weatherData"] as Dictionary;
+            var weatherView = View.findDrawableById("weatherLabel") as Text;
+            weatherView.setText(_weatherData["cityCode"]);
         }
         
         var weekStr = Utils.getWeekStr(today.day_of_week);

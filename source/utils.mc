@@ -7,7 +7,7 @@ import Toybox.Communications;
 class Utils {
     (:background)
     static function getStoredKey() as String {
-        return "abcd";
+        return "guoba";
     }
 
     static function getNumber(data, defaultData as Number) {

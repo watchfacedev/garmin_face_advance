@@ -35,14 +35,14 @@ class DateHttpRequest {
 
     function makeRequest(date as String) as Void {
         // Ui.pushView( new LoadingView(), null, Ui.SLIDE_IMMEDIATE);
-        var url = "https://www.mxnzp.com/api/holiday/single/" + date + "?ignoreHoliday=false&app_id=ktxnjmfvhcpoponl&app_secret=QUdGaVZJTzZreTZoZitzVUlrTGVoZz09";
+        var url = "https://gateway.daozhao.com.cn/mxnzp/daily";
         var app = Application.getApp();
         
         var params = {
             // "definedParams" => "123456789abcdefg"
         };
         var options = {
-            :method => Communications.HTTP_REQUEST_METHOD_GET,
+            :method => Communications.HTTP_REQUEST_METHOD_POST,
             // :headers => {
             //     "Authorization" => app.getProperty("apikey"),
             //     "Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED
