@@ -4,8 +4,12 @@ import Toybox.WatchUi;
 import Toybox.System;
 import Toybox.Communications;
 
-
 class Utils {
+    (:background)
+    static function getStoredKey() as String {
+        return "abcd";
+    }
+
     static function getNumber(data, defaultData as Number) {
         return data has :toNumber ? data.toNumber() : defaultData;
     }

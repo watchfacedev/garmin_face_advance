@@ -18,7 +18,8 @@ class DateServiceDelegate extends System.ServiceDelegate {
         var dataArr = [today.year.format("%04u"), today.month.format("%02u"), today.day.format("%02u")];
         var storedDate = Lang.format("$1$-$2$-$3$", dataArr);
         // 如果当天已经存储过了，不再继续请求接口
-        var dateInfo = Storage.getValue("dateInfo") as Lang.Dictionary<String, Lang.Dictionary>;
+        var storedKey = Utils.getStoredKey();
+        var dateInfo = Storage.getValue(storedKey) as Lang.Dictionary<String, Lang.Dictionary>;
         if (dateInfo != null && storedDate.equals(dateInfo["date"])) {
     	    System.println("existed: " + dateInfo["date"]);
             return;

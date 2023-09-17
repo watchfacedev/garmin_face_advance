@@ -20,8 +20,9 @@ class DateHttpRequest {
             // Ui.popView(Ui.SLIDE_IMMEDIATE);
             System.println("Request Successful:" + responseData["msg"]);
             if (responseData["code"] == 1) {
-                Storage.setValue("dateInfo", responseData["data"]);
-                var dateInfo = Storage.getValue("dateInfo");
+                var storedKey = Utils.getStoredKey();
+                Storage.setValue(storedKey, responseData["data"]);
+                var dateInfo = Storage.getValue(storedKey);
                 System.println("get set dateInfo: " + dateInfo);
                 // self.onAfterReceive.invoke();
             }

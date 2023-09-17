@@ -92,24 +92,24 @@ class faceView extends WatchUi.WatchFace {
         dc.drawBitmap( 110, 10, batteryRes );
 
         // 心率
-        var heartRate;
-        if (ActivityMonitor has :getHeartRateHistory) {
-            var activityInfo = Activity.getActivityInfo();
-            heartRate = activityInfo.currentHeartRate;
-            if(heartRate==null) {
-                var HRH=ActivityMonitor.getHeartRateHistory(1, true);
-                var HRS=HRH.next();
-                if(HRS!=null && HRS.heartRate!= ActivityMonitor.INVALID_HR_SAMPLE){
-                    heartRate = HRS.heartRate;
-                }
-            }
+        // var heartRate;
+        // if (ActivityMonitor has :getHeartRateHistory) {
+        //     var activityInfo = Activity.getActivityInfo();
+        //     heartRate = activityInfo.currentHeartRate;
+        //     if(heartRate==null) {
+        //         var HRH=ActivityMonitor.getHeartRateHistory(1, true);
+        //         var HRS=HRH.next();
+        //         if(HRS!=null && HRS.heartRate!= ActivityMonitor.INVALID_HR_SAMPLE){
+        //             heartRate = HRS.heartRate;
+        //         }
+        //     }
 
-            if(heartRate!=null) {
-                heartRate = heartRate.toString();
-            } else{
-                heartRate = "--";
-            }
-        }
+        //     if(heartRate!=null) {
+        //         heartRate = heartRate.toString();
+        //     } else{
+        //         heartRate = "--";
+        //     }
+        // }
 
          // 步数 get ActivityMonitor info
         var info = ActivityMonitor.getInfo();
@@ -144,8 +144,14 @@ class faceView extends WatchUi.WatchFace {
         var zhFont=WatchUi.loadResource(Rez.Fonts.zhFont);
     	dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         var dateStr = Lang.format("$1$/$2$", [today.month, today.day]);
-        var dateInfo = Storage.getValue("dateInfo") as Lang.Dictionary;
-        var lunarStr = dateInfo["lunarCalendar"];
+
+        var storedKey = Utils.getStoredKey();
+        var dateInfo = Storage.getValue(storedKey) as Lang.Dictionary;
+        var lunarStr = "";
+        if (dateInfo != null) {
+            lunarStr = dateInfo["lunarCalendar"];
+        }
+        
         var weekStr = Utils.getWeekStr(today.day_of_week);
         dc.drawText(130, 210, zhFont, Lang.format("$1$ $2$ $3$", [dateStr, lunarStr, weekStr]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
