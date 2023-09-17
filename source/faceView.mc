@@ -3,6 +3,7 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Time;
+import Toybox.Activity;
 import Toybox.ActivityMonitor;
 import Toybox.Communications;
 import Toybox.Application.Storage;
@@ -89,6 +90,26 @@ class faceView extends WatchUi.WatchFace {
         batteryView.setText(battery.toString() + "%");
         var batteryRes = WatchUi.loadResource(Rez.Drawables.battery) as BitmapResource;
         dc.drawBitmap( 110, 10, batteryRes );
+
+        // 心率
+        var heartRate;
+        if (ActivityMonitor has :getHeartRateHistory) {
+            var activityInfo = Activity.getActivityInfo();
+            heartRate = activityInfo.currentHeartRate;
+            if(heartRate==null) {
+                var HRH=ActivityMonitor.getHeartRateHistory(1, true);
+                var HRS=HRH.next();
+                if(HRS!=null && HRS.heartRate!= ActivityMonitor.INVALID_HR_SAMPLE){
+                    heartRate = HRS.heartRate;
+                }
+            }
+
+            if(heartRate!=null) {
+                heartRate = heartRate.toString();
+            } else{
+                heartRate = "--";
+            }
+        }
 
          // 步数 get ActivityMonitor info
         var info = ActivityMonitor.getInfo();
