@@ -136,7 +136,7 @@ class faceView extends WatchUi.WatchFace {
         distView.setText(Utils.filledK(info.distance));
 
         var caloryView = View.findDrawableById("caloryText") as Text;
-        distView.setText(Utils.filledK(info.calories));
+        caloryView.setText(Utils.filledK(info.calories));
 
         var msgView = View.findDrawableById("msgText") as Text;
         msgView.setText(devSettings.notificationCount.toString());
