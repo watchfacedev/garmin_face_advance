@@ -38,6 +38,9 @@ class Utils {
         var current = getNumber(options.get(:current), 0);
         if (current > 0) {
             var max = getNumber(options.get(:max), 100);
+            if (current > max) {
+                current = max;
+            }
 
             var currentProgress = ((360 - (fullEnd - fullStart))*current/max).toNumber();
             var currentPosition = fullStart - currentProgress;

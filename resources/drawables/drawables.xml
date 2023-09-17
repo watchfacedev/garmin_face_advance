@@ -10,4 +10,6 @@
     <bitmap id="number7" filename="../bitmaps/7.png" />
     <bitmap id="number8" filename="../bitmaps/8.png" />
     <bitmap id="number9" filename="../bitmaps/9.png" />
+    <bitmap id="battery" filename="../bitmaps/battery.svg" />
+    <bitmap id="step" filename="../bitmaps/step.svg" />
 </drawables>

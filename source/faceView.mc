@@ -5,6 +5,7 @@ import Toybox.WatchUi;
 import Toybox.Time;
 import Toybox.ActivityMonitor;
 import Toybox.Communications;
+import Toybox.Application.Storage;
 
 
 class faceView extends WatchUi.WatchFace {
@@ -29,6 +30,10 @@ class faceView extends WatchUi.WatchFace {
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+        // 在imageContainer中预设图片的位置
+        var imageContainer = new Rez.Drawables.ImageContainer();
+        imageContainer.draw( dc );
+
         // Get and show the current time
         var devSettings = System.getDeviceSettings();
         var clockTime = System.getClockTime();
@@ -62,19 +67,6 @@ class faceView extends WatchUi.WatchFace {
             today.day.format("%02u")
         ]));
 
-
-       
-
-        //  var _customMoveBar = new Rez.Drawables.CustomMoveBar();
-        // _customMoveBar.draw(dc);
-
-        
-        // dc.drawArc(100,100,16, Graphics.ARC_CLOCKWISE ,90,360);
-
-
-        
-
-    
         // 最外层的电量
         var myStats = System.getSystemStats();
         var battery = myStats.battery.toNumber();
@@ -92,6 +84,8 @@ class faceView extends WatchUi.WatchFace {
         });
         var batteryView = View.findDrawableById("batteryLabel") as Text;
         batteryView.setText(battery.toString() + "%");
+        var batteryRes = WatchUi.loadResource(Rez.Drawables.battery) as BitmapResource;
+        dc.drawBitmap( 110, 10, batteryRes );
 
          // 步数 get ActivityMonitor info
         var info = ActivityMonitor.getInfo();
@@ -101,39 +95,44 @@ class faceView extends WatchUi.WatchFace {
             :x=>180,
             :y=>80,
             :r=>24,
-            :fullStart=>100,
+            :fullStart=>80,
             :fullEnd=>120,
             :max=>info.stepGoal,
             :current=>info.steps,
             :color=>Graphics.COLOR_DK_GREEN,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
-        var stepView = View.findDrawableById("stepLabel") as Text;
+        var stepView = View.findDrawableById("stepText") as Text;
         stepView.setText(info.steps.toString());
+        var stepRes = WatchUi.loadResource(Rez.Drawables.step) as BitmapResource;
+        dc.drawBitmap( 170, 52, stepRes);
 
 
-        // var distView = View.findDrawableById("distLabel") as Text;
-        // distView.setText("周茹 " + info.distance.toString());
+        var distance = info.distance;
+        if (distance > 1000) {
+            distance = distance.toFloat();
+            distance = (distance/1000).format("%.1f");
+            distance = distance + "K";
+        }
+        var distView = View.findDrawableById("distText") as Text;
+        distView.setText(distance.toString());
 
-        var caloryView = View.findDrawableById("caloryLabel") as Text;
-        caloryView.setText("CAL " + info.calories.toString());
+        var caloryView = View.findDrawableById("caloryText") as Text;
+        caloryView.setText(info.calories.toString());
 
-        var msgView = View.findDrawableById("msgLabel") as Text;
-        msgView.setText("MSG " + devSettings.notificationCount.toString());
-
-        var dateView = View.findDrawableById("dateLabel") as Text;
-        dateView.setText(Lang.format("$1$/$2$", [today.month, today.day]));
+        var msgView = View.findDrawableById("msgText") as Text;
+        msgView.setText(devSettings.notificationCount.toString());
 
         var zhFont=WatchUi.loadResource(Rez.Fonts.zhFont);
-    	dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(140, 210, zhFont, Utils.getWeekStr(today.day_of_week), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        // var weekView = View.findDrawableById("weekLabel") as Text;
-        // weekView.setText(Utils.getWeekStr(today.day_of_week));
+    	dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+        var dateStr = Lang.format("$1$/$2$", [today.month, today.day]);
+        var dateInfo = Storage.getValue("dateInfo") as Lang.Dictionary;
+        var lunarStr = dateInfo["lunarCalendar"];
+        var weekStr = Utils.getWeekStr(today.day_of_week);
+        dc.drawText(130, 210, zhFont, Lang.format("$1$ $2$ $3$", [dateStr, lunarStr, weekStr]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 
-        // 在imageContainer中预设图片的位置
-        // var imageContainer = new Rez.Drawables.ImageContainer();
-        // imageContainer.draw( dc );
+        
         
 
         
