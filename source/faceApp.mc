@@ -21,21 +21,35 @@ class faceApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
+        var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var ts = Lang.format("$1$-$2$-$3$ $4$:$5$ ", [
+            today.year.format("%04u"),
+            today.month.format("%02u"),
+            today.day.format("%02u"),
+            today.hour.format("%02u"),
+            today.min.format("%02u"),
+        ]);
         //register for temporal events if they are supported
         if(Toybox.System has :ServiceDelegate) {
             // canDoBG=true;
             Background.registerForTemporalEvent(new Time.Duration(5 * 60));
-            System.println("****background is registered****");
+            System.println(ts + "****background is registered****");
         } else {
-            System.println("****background not available on this device****");
+            System.println(ts + "****background not available on this device****");
         }
 
         return [ new faceView() ] as Array<Views or InputDelegates>;
     }
 
      function getServiceDelegate(){
-    	var now=System.getClockTime();
-    	var ts=now.hour+":"+now.min.format("%02d");    
+    	var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var ts = Lang.format("$1$-$2$-$3$ $4$:$5$ ", [
+            today.year.format("%04u"),
+            today.month.format("%02u"),
+            today.day.format("%02u"),
+            today.hour.format("%02u"),
+            today.min.format("%02u"),
+        ]);
     	System.println("getServiceDelegate: "+ts);
         return [new DateServiceDelegate()];
     }

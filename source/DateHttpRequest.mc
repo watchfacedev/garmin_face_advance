@@ -15,6 +15,15 @@ class DateHttpRequest {
     }
     
     function onReceive(responseCode as Number, responseData as Null or Dictionary or String) as Void {
+        var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var ts = Lang.format("$1$-$2$-$3$ $4$:$5$ ", [
+            today.year.format("%04u"),
+            today.month.format("%02u"),
+            today.day.format("%02u"),
+            today.hour.format("%02u"),
+            today.min.format("%02u"),
+        ]);
+    	System.println(ts + " onReceive: " + responseCode);
         System.println("responseData: " + responseData);
         if (responseCode == 200) {
             // Ui.popView(Ui.SLIDE_IMMEDIATE);
@@ -28,7 +37,6 @@ class DateHttpRequest {
             }
         } else {
             // Ui.popView(Ui.SLIDE_IMMEDIATE);
-            System.println("responseCode: " + responseCode);
             // self.onAfterReceive.invoke("Can't connect:" + responseCode + "\n" + Storage.getValue("test1"));
         }        
     }
@@ -51,6 +59,15 @@ class DateHttpRequest {
         };
 
         var responseCallback = method(:onReceive);
+        var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var ts = Lang.format("$1$-$2$-$3$ $4$:$5$ ", [
+            today.year.format("%04u"),
+            today.month.format("%02u"),
+            today.day.format("%02u"),
+            today.hour.format("%02u"),
+            today.min.format("%02u"),
+        ]);
+    	System.println(ts + " makeRequest: " + url);
         Communications.makeWebRequest(url, params, options, responseCallback);
     }
 }

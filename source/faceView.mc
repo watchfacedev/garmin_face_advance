@@ -65,12 +65,6 @@ class faceView extends WatchUi.WatchFace {
 
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 
-        System.println(Lang.format("$1$-$2$-$3$", [
-            today.year.format("%04u"),
-            today.month.format("%02u"),
-            today.day.format("%02u")
-        ]));
-
         // 最外层的电量
         var myStats = System.getSystemStats();
         var battery = myStats.battery.toNumber();
