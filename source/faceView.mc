@@ -68,6 +68,7 @@ class faceView extends WatchUi.WatchFace {
         // 最外层的电量
         var myStats = System.getSystemStats();
         var battery = myStats.battery.toNumber();
+        // battery = 90;
         Utils.drawCircle(dc, {
             :width=>14,
             :x=>130,
@@ -83,7 +84,7 @@ class faceView extends WatchUi.WatchFace {
         var batteryView = View.findDrawableById("batteryLabel") as Text;
         batteryView.setText(battery.toString() + "%");
         var batteryRes = WatchUi.loadResource(Rez.Drawables.battery) as BitmapResource;
-        dc.drawBitmap( 105, 10, batteryRes );
+        dc.drawBitmap( 105, 2, batteryRes );
 
         // 心率
         var heartRate = "";
@@ -108,6 +109,8 @@ class faceView extends WatchUi.WatchFace {
          // 步数 get ActivityMonitor info
         var info = ActivityMonitor.getInfo();
 
+        var steps = info.steps;
+        // steps = 78;
         Utils.drawCircle(dc, {
             :width=>4,
             :x=>180,
@@ -116,12 +119,12 @@ class faceView extends WatchUi.WatchFace {
             :fullStart=>60,
             :fullEnd=>120,
             :max=>info.stepGoal,
-            :current=>info.steps,
+            :current=>steps,
             :color=>Graphics.COLOR_DK_GREEN,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var stepView = View.findDrawableById("stepText") as Text;
-        stepView.setText(info.steps.toString());
+        stepView.setText(steps.toString());
         var stepRes = WatchUi.loadResource(Rez.Drawables.step) as BitmapResource;
         dc.drawBitmap( 170, 52, stepRes);
 
@@ -129,15 +132,25 @@ class faceView extends WatchUi.WatchFace {
         heartrateView.setText(heartRate);
         var heartrateRes = WatchUi.loadResource(Rez.Drawables.heartrate) as BitmapResource;
         dc.drawBitmap( 190, 110, heartrateRes);
-
+        
+        var distance = info.distance; // cm
+        distance = (600/1000.0).toFloat();
         var distView = View.findDrawableById("distText") as Text;
-        distView.setText(Utils.filledK(info.distance));
+        distView.setText(Utils.filledK(distance));
+        // var distanceRes = WatchUi.loadResource(Rez.Drawables.distance) as BitmapResource;
+        // dc.drawBitmap( 155, 130, distanceRes);
 
+        var calories = info.calories; // kCal
+        // calories =420;
         var caloryView = View.findDrawableById("caloryText") as Text;
-        caloryView.setText(Utils.filledK(info.calories));
+        caloryView.setText(Utils.filledK(calories));
+        // var caloryRes = WatchUi.loadResource(Rez.Drawables.calory) as BitmapResource;
+        // dc.drawBitmap( 155, 150, caloryRes);
 
         var msgView = View.findDrawableById("msgText") as Text;
         msgView.setText(devSettings.notificationCount.toString());
+        // var messageRes = WatchUi.loadResource(Rez.Drawables.message) as BitmapResource;
+        // dc.drawBitmap( 155, 170, messageRes);
 
         var zhFont=WatchUi.loadResource(Rez.Fonts.zhFont);
     	dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);

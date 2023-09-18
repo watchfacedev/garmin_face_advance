@@ -30,7 +30,7 @@ class Utils {
             return "周六";
         }
     }
-    static function filledK(number as Number) as String {
+    static function filledK(number as Number | Float) as String {
         if (number > 1000) {
             number = number.toFloat();
             number = (number/1000).format("%.1f");
