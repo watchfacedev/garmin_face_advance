@@ -89,27 +89,27 @@ class faceView extends WatchUi.WatchFace {
         var batteryView = View.findDrawableById("batteryLabel") as Text;
         batteryView.setText(battery.toString() + "%");
         var batteryRes = WatchUi.loadResource(Rez.Drawables.battery) as BitmapResource;
-        dc.drawBitmap( 110, 10, batteryRes );
+        dc.drawBitmap( 105, 10, batteryRes );
 
         // 心率
-        // var heartRate;
-        // if (ActivityMonitor has :getHeartRateHistory) {
-        //     var activityInfo = Activity.getActivityInfo();
-        //     heartRate = activityInfo.currentHeartRate;
-        //     if(heartRate==null) {
-        //         var HRH=ActivityMonitor.getHeartRateHistory(1, true);
-        //         var HRS=HRH.next();
-        //         if(HRS!=null && HRS.heartRate!= ActivityMonitor.INVALID_HR_SAMPLE){
-        //             heartRate = HRS.heartRate;
-        //         }
-        //     }
+        var heartRate = "";
+        if (ActivityMonitor has :getHeartRateHistory) {
+            var activityInfo = Activity.getActivityInfo();
+            heartRate = activityInfo.currentHeartRate;
+            if(heartRate==null) {
+                var HRH=ActivityMonitor.getHeartRateHistory(1, true);
+                var HRS=HRH.next();
+                if(HRS!=null && HRS.heartRate!= ActivityMonitor.INVALID_HR_SAMPLE){
+                    heartRate = HRS.heartRate;
+                }
+            }
 
-        //     if(heartRate!=null) {
-        //         heartRate = heartRate.toString();
-        //     } else{
-        //         heartRate = "--";
-        //     }
-        // }
+            if(heartRate!=null) {
+                heartRate = heartRate.toString();
+            } else{
+                heartRate = "--";
+            }
+        }
 
          // 步数 get ActivityMonitor info
         var info = ActivityMonitor.getInfo();
@@ -119,7 +119,7 @@ class faceView extends WatchUi.WatchFace {
             :x=>180,
             :y=>80,
             :r=>24,
-            :fullStart=>80,
+            :fullStart=>60,
             :fullEnd=>120,
             :max=>info.stepGoal,
             :current=>info.steps,
@@ -131,6 +131,10 @@ class faceView extends WatchUi.WatchFace {
         var stepRes = WatchUi.loadResource(Rez.Drawables.step) as BitmapResource;
         dc.drawBitmap( 170, 52, stepRes);
 
+        var heartrateView = View.findDrawableById("heartrateText") as Text;
+        heartrateView.setText(heartRate);
+        var heartrateRes = WatchUi.loadResource(Rez.Drawables.heartrate) as BitmapResource;
+        dc.drawBitmap( 190, 110, heartrateRes);
 
         var distView = View.findDrawableById("distText") as Text;
         distView.setText(Utils.filledK(info.distance));
@@ -153,7 +157,7 @@ class faceView extends WatchUi.WatchFace {
             // 天气
             var _weatherData = dateInfo["_weatherData"] as Dictionary;
             var weatherView = View.findDrawableById("weatherLabel") as Text;
-            weatherView.setText(_weatherData["cityCode"]);
+            dc.drawText(90, 70, zhFont, Lang.format("$1$ $2$", [_weatherData["weather"], _weatherData["temp"]]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         }
         
         var weekStr = Utils.getWeekStr(today.day_of_week);
