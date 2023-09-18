@@ -13,5 +13,8 @@
     <bitmap id="battery" filename="../bitmaps/battery.svg" />
     <bitmap id="step" filename="../bitmaps/step.svg" />
     <bitmap id="heartrate" filename="../bitmaps/heartrate.svg" />
+    <bitmap id="distance" filename="../bitmaps/distance.svg" />
+    <bitmap id="calory" filename="../bitmaps/calory.svg" />
+    <bitmap id="message" filename="../bitmaps/message.svg" />
     <bitmap id="bg" filename="../bitmaps/bg.png" />
 </drawables>

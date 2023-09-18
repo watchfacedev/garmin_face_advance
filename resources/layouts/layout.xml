@@ -1,7 +1,7 @@
 <layout id="WatchFace">
     <drawable id="background"></drawable>
     <!-- 电量 -->
-    <label id="batteryLabel" x="140" y="start" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_LT_GRAY" />
+    <label id="batteryLabel" x="140" y="0" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_LT_GRAY" />
     <!-- 天气 -->
     <label id="weatherLabel" x="90" y="60" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_LT_GRAY" />
     <!-- 步数 -->
