@@ -110,7 +110,6 @@ class faceView extends WatchUi.WatchFace {
         var info = ActivityMonitor.getInfo();
 
         var steps = info.steps;
-        // steps = 78;
         Utils.drawCircle(dc, {
             :width=>4,
             :x=>180,
@@ -134,14 +133,13 @@ class faceView extends WatchUi.WatchFace {
         dc.drawBitmap( 190, 110, heartrateRes);
         
         var distance = info.distance; // cm
-        distance = (600/1000.0).toFloat();
+        distance = distance/100;
         var distView = View.findDrawableById("distText") as Text;
         distView.setText(Utils.filledK(distance));
         // var distanceRes = WatchUi.loadResource(Rez.Drawables.distance) as BitmapResource;
         // dc.drawBitmap( 155, 130, distanceRes);
 
         var calories = info.calories; // kCal
-        // calories =420;
         var caloryView = View.findDrawableById("caloryText") as Text;
         caloryView.setText(Utils.filledK(calories));
         // var caloryRes = WatchUi.loadResource(Rez.Drawables.calory) as BitmapResource;
