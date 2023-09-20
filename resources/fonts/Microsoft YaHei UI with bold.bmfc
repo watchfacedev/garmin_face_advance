@@ -1,0 +1,64 @@
+# AngelCode Bitmap Font Generator configuration file
+fileVersion=1
+
+# font settings
+fontName=Microsoft YaHei UI
+fontFile=
+charSet=134
+fontSize=20
+aa=1
+scaleH=100
+useSmoothing=1
+isBold=1
+isItalic=0
+useUnicode=1
+disableBoxChars=1
+outputInvalidCharGlyph=0
+dontIncludeKerningPairs=0
+useHinting=1
+renderFromOutline=0
+useClearType=1
+autoFitNumPages=0
+autoFitFontSizeMin=0
+autoFitFontSizeMax=0
+
+# character alignment
+paddingDown=0
+paddingUp=0
+paddingRight=0
+paddingLeft=0
+spacingHoriz=1
+spacingVert=1
+useFixedHeight=0
+forceZero=0
+widthPaddingFactor=0.00
+
+# output file
+outWidth=256
+outHeight=256
+outBitDepth=8
+fontDescFormat=0
+fourChnlPacked=0
+textureFormat=png
+textureCompression=0
+alphaChnl=0
+redChnl=0
+greenChnl=0
+blueChnl=0
+invA=0
+invR=0
+invG=0
+invB=0
+
+# outline
+outlineThickness=0
+
+# selected chars
+chars=32-127,913-929,931-937,945-961,963-969,976-977,981,987,8202,8208,8211-8214,8216-8222,8224-8226,8228
+chars=8229-8231,8240,8242-8243,8245,8249-8252,8254,8260,8451,8453,8457,8467,8470,8481-8482,8486,8494,8533
+chars=8534-8584,8592-8595,8598-8601,19968-19969,19971,19977,19985,19993,20057,20061,20108,20113,20116
+chars=20133,20843,20845,20908,20912,21021,21313,21320,21359,21608,22235,22764,22810,22823,22825,23376
+chars=23493,23567,24049,24051,24180,24218,24319,25098,25100,26085,26228,26376,26410,27491,30002-30003
+chars=30328,33098,36763,36784,37193,38452,38632,38634,38647,38654,38684,39118
+
+# imported icon images
