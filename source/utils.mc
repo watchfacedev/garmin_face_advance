@@ -13,6 +13,9 @@ class Utils {
     static function getNumber(data, defaultData as Number) {
         return data has :toNumber ? data.toNumber() : defaultData;
     }
+    static function getFloat(data, defaultData as Float) {
+        return data has :toFloat ? data.toFloat() : defaultData;
+    }
     static function getWeekStr(number as Number) {
         if(number == 1) {
             return "周日";
@@ -49,13 +52,15 @@ class Utils {
         // 计算当前进度画图位置
         var current = getNumber(options.get(:current), 0);
         if (current > 0) {
-            var max = getNumber(options.get(:max), 100);
+            var max = getFloat(options.get(:max), 100.0);
+            // 超过max以max计
             if (current > max) {
                 current = max;
             }
 
-            var currentProgress = ((360 - (fullEnd - fullStart))*current/max).toNumber();
-            var currentPosition = fullStart - currentProgress;
+            var progressLen = (360 - (fullEnd - fullStart))*current/max;
+            var currentPosition = fullStart - progressLen;
+            // 如果为负了取对应的正值算
             if (currentPosition < 0) {
                 currentPosition = currentPosition + 360;
             }
