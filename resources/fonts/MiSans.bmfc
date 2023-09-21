@@ -1,0 +1,66 @@
+# AngelCode Bitmap Font Generator configuration file
+fileVersion=1
+
+# font settings
+fontName=MiSans Medium
+fontFile=../../../../../Sof/bmfont64_1.14b_beta/仓耳今楷/CangErJinKai01-9128-W01-2.otf
+charSet=0
+fontSize=16
+aa=1
+scaleH=100
+useSmoothing=1
+isBold=0
+isItalic=0
+useUnicode=1
+disableBoxChars=1
+outputInvalidCharGlyph=0
+dontIncludeKerningPairs=0
+useHinting=1
+renderFromOutline=0
+useClearType=1
+autoFitNumPages=0
+autoFitFontSizeMin=0
+autoFitFontSizeMax=0
+
+# character alignment
+paddingDown=0
+paddingUp=0
+paddingRight=0
+paddingLeft=0
+spacingHoriz=1
+spacingVert=1
+useFixedHeight=0
+forceZero=0
+widthPaddingFactor=0.00
+
+# output file
+outWidth=256
+outHeight=256
+outBitDepth=8
+fontDescFormat=0
+fourChnlPacked=0
+textureFormat=png
+textureCompression=0
+alphaChnl=0
+redChnl=0
+greenChnl=0
+blueChnl=0
+invA=0
+invR=0
+invG=0
+invB=0
+
+# outline
+outlineThickness=0
+
+# selected chars
+chars=13,32-127,884-885,894,902-906,908,910-929,931-974,977-980,982,8208,8211-8214,8216-8218,8220-8222
+chars=8224-8226,8229-8230,8240-8247,8249-8252,8254,8258-8260,8263-8265,8270,8273,8277,8355-8356,8361,8363
+chars=8364,8366,8369,8376-8378,8381,8383,8451,8453,8457,8467-8468,8470-8471,8478,8480-8482,8486,8494,8531
+chars=8532,8539-8542,8544-8569,8576-8578,8592-8595,8598-8601,8644,13198-13199,13212-13214,13217,13252
+chars=13262,13265-13266,13269,19968-19969,19971,19977,19985,19993,20057,20061,20108,20113,20116,20133
+chars=20843,20845,20908,20912,21021,21313,21320,21359,21608,22235,22764,22810,22823,22825,23376,23493
+chars=23567,24049,24051,24180,24218,24319,25098,25100,26085,26228,26376,26410,27491,30002-30003,30328
+chars=33098,36763,36784,37193,38452,38632,38634,38647,38654,38684,39118
+
+# imported icon images

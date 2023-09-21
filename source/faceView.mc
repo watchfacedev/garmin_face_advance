@@ -156,9 +156,10 @@ class faceView extends WatchUi.WatchFace {
 
         var storedKey = Utils.getStoredKey();
         var dateInfo = Storage.getValue(storedKey) as Lang.Dictionary;
-        var lunarStr = "";
         if (dateInfo != null) {
-            lunarStr = dateInfo["lunarCalendar"];
+            // 农历
+            dc.drawText(130, 230, zhFont, Lang.format("$1$ $2$", [dateInfo["yearTips"], dateInfo["lunarCalendar"]]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+
             // 天气
             var _weatherData = dateInfo["_weatherData"] as Dictionary;
             var weatherView = View.findDrawableById("weatherLabel") as Text;
@@ -166,7 +167,7 @@ class faceView extends WatchUi.WatchFace {
         }
         
         var weekStr = Utils.getWeekStr(today.day_of_week);
-        dc.drawText(130, 210, zhFont, Lang.format("$1$ $2$ $3$", [dateStr, lunarStr, weekStr]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(130, 210, zhFont, Lang.format("$1$ $2$", [dateStr, weekStr]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 
         
