@@ -163,7 +163,7 @@ class faceView extends WatchUi.WatchFace {
             // 天气
             var _weatherData = dateInfo["_weatherData"] as Dictionary;
             var weatherView = View.findDrawableById("weatherLabel") as Text;
-            dc.drawText(90, 70, zhFont, Lang.format("$1$ $2$", [_weatherData["weather"], _weatherData["temp"]]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+            dc.drawText(130, 40, zhFont, Lang.format("$1$ $2$", [_weatherData["weather"], _weatherData["temp"]]), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         }
         
         var weekStr = Utils.getWeekStr(today.day_of_week);
