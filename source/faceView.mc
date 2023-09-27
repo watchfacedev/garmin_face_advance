@@ -50,8 +50,8 @@ class faceView extends WatchUi.WatchFace {
         var hourTextFirstRes = Utils.loadNumberResource(hourTextFirst);
         var hourTextSecond = hourText.substring(1, 2);
         var hourTextSecondRes = Utils.loadNumberResource(hourTextSecond);
-        dc.drawBitmap( 31, 90, hourTextFirstRes );
-        dc.drawBitmap( 80, 90, hourTextSecondRes );
+        dc.drawBitmap( 21, 90, hourTextFirstRes );
+        dc.drawBitmap( 70, 90, hourTextSecondRes );
 
         var minuteText = clockTime.min.format("%02d");
         // var minuteView = View.findDrawableById("minuteLabel") as Text;
@@ -60,8 +60,8 @@ class faceView extends WatchUi.WatchFace {
         var minuteTextFirstRes = Utils.loadNumberResource(minuteTextFirst);
         var minuteTextSecond = minuteText.substring(1, 2);
         var minuteTextSecondRes = Utils.loadNumberResource(minuteTextSecond);
-        dc.drawBitmap( 31, 130, minuteTextFirstRes );
-        dc.drawBitmap( 80, 130, minuteTextSecondRes );
+        dc.drawBitmap( 21, 130, minuteTextFirstRes );
+        dc.drawBitmap( 70, 130, minuteTextSecondRes );
 
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 
@@ -78,7 +78,7 @@ class faceView extends WatchUi.WatchFace {
             :fullEnd=>105,
             :max=>100,
             :current=>battery,
-            :color=>Graphics.COLOR_DK_GREEN,
+            :color=>0x57bca7,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var batteryView = View.findDrawableById("batteryLabel") as Text;
@@ -119,7 +119,7 @@ class faceView extends WatchUi.WatchFace {
             :fullEnd=>120,
             :max=>info.stepGoal,
             :current=>steps,
-            :color=>Graphics.COLOR_DK_GREEN,
+            :color=>0x57bca7,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var stepView = View.findDrawableById("stepText") as Text;
