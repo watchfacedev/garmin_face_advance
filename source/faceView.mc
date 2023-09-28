@@ -41,6 +41,16 @@ class faceView extends WatchUi.WatchFace {
         // Get and show the current time
         var devSettings = System.getDeviceSettings();
         var clockTime = System.getClockTime();
+        var zhFont = WatchUi.loadResource(Rez.Fonts.zhFont);
+        var chillFont = WatchUi.loadResource(Rez.Fonts.chillFont);
+
+         var guoqingRes = WatchUi.loadResource(Rez.Drawables.guoqing) as BitmapResource;
+        dc.drawBitmap( 50, 50, guoqingRes);
+        // dc.drawBitmap2( 100, 100, guoqingRes, {
+        //     :bitmapX => 10,
+        //     :bitmapY => 10,
+        // });
+
         var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
         // 设置小时、分钟 动态加载图片资源，然后直接设置在指定坐标位置
         var hourText = clockTime.hour.format("%02d");
@@ -50,8 +60,8 @@ class faceView extends WatchUi.WatchFace {
         var hourTextFirstRes = Utils.loadNumberResource(hourTextFirst);
         var hourTextSecond = hourText.substring(1, 2);
         var hourTextSecondRes = Utils.loadNumberResource(hourTextSecond);
-        dc.drawBitmap( 21, 90, hourTextFirstRes );
-        dc.drawBitmap( 70, 90, hourTextSecondRes );
+        // dc.drawBitmap( 21, 90, hourTextFirstRes );
+        // dc.drawBitmap( 70, 90, hourTextSecondRes );
 
         var minuteText = clockTime.min.format("%02d");
         // var minuteView = View.findDrawableById("minuteLabel") as Text;
@@ -60,8 +70,10 @@ class faceView extends WatchUi.WatchFace {
         var minuteTextFirstRes = Utils.loadNumberResource(minuteTextFirst);
         var minuteTextSecond = minuteText.substring(1, 2);
         var minuteTextSecondRes = Utils.loadNumberResource(minuteTextSecond);
-        dc.drawBitmap( 21, 130, minuteTextFirstRes );
-        dc.drawBitmap( 70, 130, minuteTextSecondRes );
+        // dc.drawBitmap( 21, 130, minuteTextFirstRes );
+        // dc.drawBitmap( 70, 130, minuteTextSecondRes );
+        dc.drawText(60, 100, chillFont, timeString, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+
 
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 
@@ -119,7 +131,7 @@ class faceView extends WatchUi.WatchFace {
             :fullEnd=>120,
             :max=>info.stepGoal,
             :current=>steps,
-            :color=>0x57bca7,
+            :color=>Graphics.COLOR_RED,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var stepView = View.findDrawableById("stepText") as Text;
@@ -136,21 +148,20 @@ class faceView extends WatchUi.WatchFace {
         distance = distance/100;
         var distView = View.findDrawableById("distText") as Text;
         distView.setText(Utils.filledK(distance));
-        // var distanceRes = WatchUi.loadResource(Rez.Drawables.distance) as BitmapResource;
-        // dc.drawBitmap( 155, 130, distanceRes);
+        var distanceRes = WatchUi.loadResource(Rez.Drawables.distance) as BitmapResource;
+        dc.drawBitmap( 24, 160, distanceRes);
 
         var calories = info.calories; // kCal
         var caloryView = View.findDrawableById("caloryText") as Text;
         caloryView.setText(Utils.filledK(calories));
-        // var caloryRes = WatchUi.loadResource(Rez.Drawables.calory) as BitmapResource;
-        // dc.drawBitmap( 155, 150, caloryRes);
+        var caloryRes = WatchUi.loadResource(Rez.Drawables.calory) as BitmapResource;
+        dc.drawBitmap( 45, 185, caloryRes);
 
         var msgView = View.findDrawableById("msgText") as Text;
         msgView.setText(devSettings.notificationCount.toString());
-        // var messageRes = WatchUi.loadResource(Rez.Drawables.message) as BitmapResource;
-        // dc.drawBitmap( 155, 170, messageRes);
+        var messageRes = WatchUi.loadResource(Rez.Drawables.message) as BitmapResource;
+        dc.drawBitmap( 195, 167, messageRes);
 
-        var zhFont=WatchUi.loadResource(Rez.Fonts.zhFont);
     	dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         var dateStr = Lang.format("$1$/$2$", [today.month, today.day]);
 

@@ -1,3 +1,4 @@
 <fonts>
     <font id="zhFont" filename="./zh.fnt" />
+    <font id="chillFont" filename="./chill.fnt" />
 </fonts>
