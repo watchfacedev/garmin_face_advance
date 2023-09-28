@@ -157,8 +157,9 @@ class faceView extends WatchUi.WatchFace {
         var caloryRes = WatchUi.loadResource(Rez.Drawables.calory) as BitmapResource;
         dc.drawBitmap( 45, 185, caloryRes);
 
+        var notificationCount = devSettings.notificationCount;
         var msgView = View.findDrawableById("msgText") as Text;
-        msgView.setText(devSettings.notificationCount.toString());
+        msgView.setText(notificationCount.toString());
         var messageRes = WatchUi.loadResource(Rez.Drawables.message) as BitmapResource;
         dc.drawBitmap( 195, 187, messageRes); // 要比正常的+2
 
