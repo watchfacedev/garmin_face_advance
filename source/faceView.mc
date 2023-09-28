@@ -51,7 +51,7 @@ class faceView extends WatchUi.WatchFace {
         //     :bitmapY => 10,
         // });
 
-        var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
+        var timeString = Lang.format("$1$:$2$", [clockTime.hour.format("%02d"), clockTime.min.format("%02d")]);
         // 设置小时、分钟 动态加载图片资源，然后直接设置在指定坐标位置
         var hourText = clockTime.hour.format("%02d");
         // var hourView = View.findDrawableById("hourLabel") as Text;
@@ -142,7 +142,7 @@ class faceView extends WatchUi.WatchFace {
         var heartrateView = View.findDrawableById("heartrateText") as Text;
         heartrateView.setText(heartRate);
         var heartrateRes = WatchUi.loadResource(Rez.Drawables.heartrate) as BitmapResource;
-        dc.drawBitmap( 190, 110, heartrateRes);
+        dc.drawBitmap( 220, 160, heartrateRes);
         
         var distance = info.distance; // cm
         distance = distance/100;
@@ -160,7 +160,7 @@ class faceView extends WatchUi.WatchFace {
         var msgView = View.findDrawableById("msgText") as Text;
         msgView.setText(devSettings.notificationCount.toString());
         var messageRes = WatchUi.loadResource(Rez.Drawables.message) as BitmapResource;
-        dc.drawBitmap( 195, 167, messageRes);
+        dc.drawBitmap( 195, 187, messageRes); // 要比正常的+2
 
     	dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         var dateStr = Lang.format("$1$/$2$", [today.month, today.day]);

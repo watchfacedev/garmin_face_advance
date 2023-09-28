@@ -7,7 +7,7 @@
     <!-- 步数 -->
     <label id="stepText" x="180" y="70" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
     <!-- 心率 -->
-    <label id="heartrateText" x="215" y="107" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+    <label id="heartrateText" x="215" y="160" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE" />
     <!-- 距离 -->
     <label id="distLabel" x="170" y="130" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY" />
     <label id="distText" x="45" y="160" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
@@ -16,7 +16,7 @@
     <label id="caloryText" x="68" y="185" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
     <!-- 消息数 -->
     <label id="msgLabel" x="170" y="170" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY" />
-    <label id="msgText" x="220" y="165" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+    <label id="msgText" x="180" y="185" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
     <!-- <drawable id="Smiley2"></drawable> -->
     <!-- <drawable id="CustomMoveBar"></drawable> -->
     <!-- <label id="hourLabel" x="80" y="70" font="Graphics.FONT_SYSTEM_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" /> -->
