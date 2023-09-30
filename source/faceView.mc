@@ -72,7 +72,10 @@ class faceView extends WatchUi.WatchFace {
         var minuteTextSecondRes = Utils.loadNumberResource(minuteTextSecond);
         // dc.drawBitmap( 21, 130, minuteTextFirstRes );
         // dc.drawBitmap( 70, 130, minuteTextSecondRes );
-        dc.drawText(60, 100, chillFont, timeString, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.setColor(0x57bca7, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(70, 65, chillFont, clockTime.hour.format("%02d"), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(70, 100, chillFont, clockTime.min.format("%02d"), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
@@ -124,7 +127,7 @@ class faceView extends WatchUi.WatchFace {
         var steps = info.steps;
         Utils.drawCircle(dc, {
             :width=>4,
-            :x=>180,
+            :x=>195,
             :y=>80,
             :r=>24,
             :fullStart=>60,
@@ -137,31 +140,31 @@ class faceView extends WatchUi.WatchFace {
         var stepView = View.findDrawableById("stepText") as Text;
         stepView.setText(steps.toString());
         var stepRes = WatchUi.loadResource(Rez.Drawables.step) as BitmapResource;
-        dc.drawBitmap( 170, 52, stepRes);
+        dc.drawBitmap( 185, 52, stepRes);
 
         var heartrateView = View.findDrawableById("heartrateText") as Text;
         heartrateView.setText(heartRate);
         var heartrateRes = WatchUi.loadResource(Rez.Drawables.heartrate) as BitmapResource;
-        dc.drawBitmap( 220, 160, heartrateRes);
+        dc.drawBitmap( 105, 180, heartrateRes);
         
         var distance = info.distance; // cm
         distance = distance/100;
         var distView = View.findDrawableById("distText") as Text;
         distView.setText(Utils.filledK(distance));
         var distanceRes = WatchUi.loadResource(Rez.Drawables.distance) as BitmapResource;
-        dc.drawBitmap( 24, 160, distanceRes);
+        dc.drawBitmap( 175, 180, distanceRes);
 
         var calories = info.calories; // kCal
         var caloryView = View.findDrawableById("caloryText") as Text;
         caloryView.setText(Utils.filledK(calories));
         var caloryRes = WatchUi.loadResource(Rez.Drawables.calory) as BitmapResource;
-        dc.drawBitmap( 45, 185, caloryRes);
+        dc.drawBitmap( 75, 180, caloryRes);
 
         var notificationCount = devSettings.notificationCount;
         var msgView = View.findDrawableById("msgText") as Text;
         msgView.setText(notificationCount.toString());
         var messageRes = WatchUi.loadResource(Rez.Drawables.message) as BitmapResource;
-        dc.drawBitmap( 195, 187, messageRes); // 要比正常的+2
+        dc.drawBitmap( 140, 182, messageRes); // 要比正常的+2
 
     	dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         var dateStr = Lang.format("$1$/$2$", [today.month, today.day]);
