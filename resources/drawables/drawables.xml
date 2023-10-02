@@ -16,6 +16,8 @@
     <bitmap id="distance" filename="../bitmaps/distance.svg"/>
     <bitmap id="calory" filename="../bitmaps/calory.svg" />
     <bitmap id="message" filename="../bitmaps/message.svg" />
+    <bitmap id="vo2max" filename="../bitmaps/o2.svg" />
+    <bitmap id="bodyBattery" filename="../bitmaps/battery2.svg" />
     <bitmap id="bg" filename="../bitmaps/bg.png" />
     <bitmap id="guoqing" filename="../bitmaps/guoqing.svg" x="center" y="center"/>
 </drawables>

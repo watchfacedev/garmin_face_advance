@@ -7,6 +7,7 @@ import Toybox.Activity;
 import Toybox.ActivityMonitor;
 import Toybox.Communications;
 import Toybox.Application.Storage;
+import Toybox.UserProfile;
 
 
 class faceView extends WatchUi.WatchFace {
@@ -121,7 +122,26 @@ class faceView extends WatchUi.WatchFace {
             }
         }
 
-         // 步数 get ActivityMonitor info
+        // 身体电量
+        var bodyBattery="";
+        if ((Toybox has :SensorHistory) && (Toybox.SensorHistory has :getBodyBatteryHistory)) {
+            bodyBattery= Toybox.SensorHistory.getBodyBatteryHistory({:period=>1});
+            if (bodyBattery!=null){
+                bodyBattery = bodyBattery.next();
+            }
+            if (bodyBattery!=null){
+                bodyBattery = bodyBattery.data;
+            }
+            if (bodyBattery!=null){
+                bodyBattery = bodyBattery.toNumber().toString();
+            } else {
+                bodyBattery = "--";
+            }
+        }
+
+        // 用户信息
+        var profile = UserProfile.getProfile();
+        // 步数 get ActivityMonitor info
         var info = ActivityMonitor.getInfo();
 
         var steps = info.steps;
@@ -146,19 +166,35 @@ class faceView extends WatchUi.WatchFace {
         heartrateView.setText(heartRate);
         var heartrateRes = WatchUi.loadResource(Rez.Drawables.heartrate) as BitmapResource;
         dc.drawBitmap( 105, 180, heartrateRes);
+        // 最大摄氧量
+        var vo2max = profile.vo2maxRunning;
+        if (vo2max != null) {
+            vo2max = vo2max.toString();
+        } else {
+            vo2max = "--";
+        }
+        var vo2maxView = View.findDrawableById("vo2maxText") as Text;
+        vo2maxView.setText(vo2max);
+        var vo2maxRes = WatchUi.loadResource(Rez.Drawables.vo2max) as BitmapResource;
+        dc.drawBitmap( 175, 180, vo2maxRes);
         
         var distance = info.distance; // cm
         distance = distance/100;
         var distView = View.findDrawableById("distText") as Text;
         distView.setText(Utils.filledK(distance));
         var distanceRes = WatchUi.loadResource(Rez.Drawables.distance) as BitmapResource;
-        dc.drawBitmap( 175, 180, distanceRes);
+        dc.drawBitmap( 205, 180, distanceRes);
 
         var calories = info.calories; // kCal
         var caloryView = View.findDrawableById("caloryText") as Text;
         caloryView.setText(Utils.filledK(calories));
         var caloryRes = WatchUi.loadResource(Rez.Drawables.calory) as BitmapResource;
-        dc.drawBitmap( 75, 180, caloryRes);
+        dc.drawBitmap( 45, 180, caloryRes);
+        // 身体电量
+        var bodyBatteryView = View.findDrawableById("bodyBatteryText") as Text;
+        bodyBatteryView.setText(bodyBattery);
+        var bodyBatteryRes = WatchUi.loadResource(Rez.Drawables.bodyBattery) as BitmapResource;
+        dc.drawBitmap( 75, 180, bodyBatteryRes);
 
         var notificationCount = devSettings.notificationCount;
         var msgView = View.findDrawableById("msgText") as Text;
