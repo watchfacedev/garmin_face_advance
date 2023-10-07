@@ -19,6 +19,11 @@ class faceApp extends Application.AppBase {
     function onStop(state as Dictionary?) as Void {
     }
 
+    function onBackgroundData(data){
+        System.println("****onBackgroundData****");
+        bgdata = "12b";
+    }
+
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
@@ -54,11 +59,9 @@ class faceApp extends Application.AppBase {
         return [new DateServiceDelegate()];
     }
 
-    function onBackgroundData(data){
-        System.println("****onBackgroundData****");
-        bgdata = "12b";
-    }
-
+    function getSettingsView() {
+        return [new SLeanSettingsMenu(),new SLeanSettingsMenuDelegate()];
+    }   
 }
 
 function getApp() as faceApp {

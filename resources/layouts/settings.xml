@@ -1,0 +1,23 @@
+<settings>
+    <setting propertyKey="@Properties.appVersion" title="Activities" maxLength="4">
+        <setting title="@Strings.AppName" type="string">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.Running</listEntry>
+                <listEntry value="1">@Strings.Cycling</listEntry>
+            </settingConfig>
+        </setting>
+        <!-- <setting title="@Strings.Zone1" type="string">
+            <settingConfig type="string"/>
+        </setting>
+        <setting title="@Strings.Zone2" type="string">
+            <settingConfig type="string"/>
+        </setting>
+        <defaults>
+            <entry>
+                <default id="activityType">0</default>
+                <default id="zone1">89</default>
+                <default id="zone2">109</default>
+            </entry>
+        </defaults> -->
+    </setting>
+</settings>
