@@ -1,8 +1,13 @@
 <strings>
     <string id="AppName">face</string>
-    <string id="activityType">activityType</string>
-    <string id="Running">Running</string>
-    <string id="Cycling">Cycling</string>
+    <string id="sn">序列号</string>
+    <string id="key">解锁码</string>
+    <string id="activityType">运动类型</string>
+    <string id="activityTypePrompt">请选择常用的运动类型</string>
+    <string id="Running">跑步</string>
+    <string id="Cycling">骑自行车</string>
     <string id="Zone1">faZone1ce</string>
     <string id="Zone2">Zone2</string>
+    <string id="MyStringTitle">MyStringTitle</string>
+    <string id="MyStringPrompt">MyStringPrompt</string>
 </strings>
