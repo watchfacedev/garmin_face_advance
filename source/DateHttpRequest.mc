@@ -6,6 +6,7 @@ import Toybox.Time;
 import Toybox.ActivityMonitor;
 import Toybox.Communications;
 import Toybox.Application.Storage;
+import Toybox.Application.Properties;
 
 (:background)
 class DateHttpRequest {
@@ -47,7 +48,8 @@ class DateHttpRequest {
         var app = Application.getApp();
         
         var params = {
-            // "definedParams" => "123456789abcdefg"
+            "sn" => Properties.getValue("sn"),
+            "key" => Properties.getValue("key"),
         };
         var options = {
             :method => Communications.HTTP_REQUEST_METHOD_POST,
