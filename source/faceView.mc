@@ -154,7 +154,7 @@ class faceView extends WatchUi.WatchFace {
             :fullEnd=>120,
             :max=>info.stepGoal,
             :current=>steps,
-            :color=>Graphics.COLOR_RED,
+            :color=>0x57bca7,
             :bgColor=>Graphics.COLOR_DK_GRAY,
         });
         var stepView = View.findDrawableById("stepText") as Text;
