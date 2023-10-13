@@ -1,6 +1,6 @@
 <properties>
     <property id="appVersion" type="string">0.0.1</property>
-    <property id="sn" type="string">abcxid</property>
+    <property id="sn" type="string"></property>
     <property id="key" type="string">0</property>
     <property id="activityType" type="number">0</property>
     <property id="myString" type="number">1</property>

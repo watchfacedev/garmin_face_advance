@@ -7,6 +7,7 @@ import Toybox.Activity;
 import Toybox.ActivityMonitor;
 import Toybox.Communications;
 import Toybox.Application.Storage;
+import Toybox.Application.Properties;
 import Toybox.UserProfile;
 
 
@@ -237,6 +238,13 @@ class faceView extends WatchUi.WatchFace {
         // moveBar.draw( dc );
 
         
+    }
+
+    function handleSettingUpdate() {
+        var AppName = WatchUi.loadResource(Rez.Strings.AppName);
+        var activityType = Properties.getValue("activityType");
+        System.println("handleSettingUpdate:" + AppName + ":" + activityType.toString());
+        WatchUi.requestUpdate();   // update the view to reflect changes
     }
 
     // Called when this View is removed from the screen. Save the

@@ -44,7 +44,7 @@ class DateHttpRequest {
 
     function makeRequest(date as String) as Void {
         // Ui.pushView( new LoadingView(), null, Ui.SLIDE_IMMEDIATE);
-        var url = "https://gateway.daozhao.com.cn/mxnzp/daily";
+        var url = "https://gateway.daozhao.com.cn/garmin/daily";
         var app = Application.getApp();
         
         var params = {

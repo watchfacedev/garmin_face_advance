@@ -1,11 +1,14 @@
 import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.Background;
 
 var bgdata="none";
 
 (:background)
 class faceApp extends Application.AppBase {
+
+    var faceViewInstance;
 
     function initialize() {
         AppBase.initialize();
@@ -22,6 +25,11 @@ class faceApp extends Application.AppBase {
     function onBackgroundData(data){
         System.println("****onBackgroundData****");
         bgdata = "12b";
+    }
+
+    function onSettingsChanged() { // triggered by settings change in GCM
+        System.println("settings changed");
+        faceViewInstance.handleSettingUpdate(); // 交由faceView那边处理配置更新后的逻辑
     }
 
     // Return the initial view of your application here
@@ -42,8 +50,9 @@ class faceApp extends Application.AppBase {
         } else {
             System.println(ts + "****background not available on this device****");
         }
-
-        return [ new faceView() ] as Array<Views or InputDelegates>;
+        
+        faceViewInstance = new faceView();
+        return [ faceViewInstance ] as Array<Views or InputDelegates>;
     }
 
      function getServiceDelegate(){
