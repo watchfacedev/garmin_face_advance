@@ -1,6 +1,6 @@
 <settings>
     <setting propertyKey="@Properties.sn" title="@Strings.sn">
-        <settingConfig type="alphaNumeric"/>
+        <settingConfig type="alphaNumeric" readonly="true"/>
     </setting>
     <setting propertyKey="@Properties.key" title="@Strings.key">
         <settingConfig type="alphaNumeric"/>

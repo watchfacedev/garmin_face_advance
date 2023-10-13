@@ -5,7 +5,6 @@ import Toybox.Background;
 
 var bgdata="none";
 
-(:background)
 class faceApp extends Application.AppBase {
 
     var faceViewInstance;
@@ -30,6 +29,22 @@ class faceApp extends Application.AppBase {
     function onSettingsChanged() { // triggered by settings change in GCM
         System.println("settings changed");
         faceViewInstance.handleSettingUpdate(); // 交由faceView那边处理配置更新后的逻辑
+    }
+
+    function onStorageChanged() {
+        System.println("onStorageChanged");
+        // 将在storage里面存储的sn存到Properties中
+        var snKey = Utils.getStoredSnKey();
+        var existedSn = Properties.getValue(snKey);
+        // 当前Properties无值时写入
+        if (existedSn != null) {
+            if (existedSn.length() == 0) {
+                 var sn = Storage.getValue(snKey);
+                if (sn != null) {
+                    Properties.setValue(snKey, sn);
+                }
+            }
+        }
     }
 
     // Return the initial view of your application here

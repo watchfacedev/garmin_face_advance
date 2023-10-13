@@ -31,9 +31,12 @@ class DateHttpRequest {
             System.println("Request Successful:" + responseData["msg"]);
             if (responseData["code"] == 1) {
                 var storedKey = Utils.getStoredKey();
-                Storage.setValue(storedKey, responseData["data"]);
-                var dateInfo = Storage.getValue(storedKey);
-                System.println("get set dateInfo: " + dateInfo);
+                var dateInfo = responseData["data"] as Dictionary;
+                var sn = dateInfo["_sn"];
+                // 保存sn和dateInfo，触发onStorageChanged事件
+                Storage.setValue(Utils.getStoredSnKey(), sn);
+                System.println("sn saved:" + sn);
+                Storage.setValue(storedKey, dateInfo);
                 // self.onAfterReceive.invoke();
             }
         } else {

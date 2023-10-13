@@ -10,6 +10,10 @@ class Utils {
         return "guoba";
     }
 
+    static function getStoredSnKey() as String {
+        return "sn";
+    }
+
     static function getNumber(data, defaultData as Number) {
         return data has :toNumber ? data.toNumber() : defaultData;
     }
