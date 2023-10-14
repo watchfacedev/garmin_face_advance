@@ -38,7 +38,7 @@ class faceApp extends Application.AppBase {
         var existedSn = Properties.getValue(snKey);
         // 当前Properties无值时写入
         if (existedSn != null) {
-            if (existedSn.length() == 0) {
+            if (existedSn.equals("") || existedSn.equals("abcxid")) {
                  var sn = Storage.getValue(snKey);
                 if (sn != null) {
                     Properties.setValue(snKey, sn);
