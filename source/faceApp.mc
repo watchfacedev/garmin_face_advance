@@ -4,7 +4,7 @@ import Toybox.WatchUi;
 import Toybox.Background;
 
 var bgdata="none";
-
+(:background)
 class faceApp extends Application.AppBase {
 
     var faceViewInstance;
